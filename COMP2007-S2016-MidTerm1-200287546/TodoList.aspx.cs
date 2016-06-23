@@ -13,6 +13,7 @@ using System.Linq.Dynamic;
 /*
 *@File Name: TodoList.aspx.cs
 *@Author: Alex Nicholls
+*@Student Number: 200287546
 *@Site: Midterm
 *@Date: June 23, 2016
 *@Description: This page displays a list of todo items.  
@@ -40,14 +41,14 @@ namespace COMP2007_S2016_MidTerm1_200287546
             }//end of postback check
         }//end of page load
 
-         /**
-         * <summary>
-         * This method gets the Todo list data from the DB
-         * </summary>
-         * 
-         * @method GetTodos
-         * @returns {void}
-         */
+        /**
+        * <summary>
+        * This method gets the Todo list data from the DB
+        * </summary>
+        * 
+        * @method GetTodos
+        * @returns {void}
+        */
         protected void GetTodos()
         {
             // connect to EF
@@ -57,10 +58,17 @@ namespace COMP2007_S2016_MidTerm1_200287546
                 var Todos = (from allTodos in db.Todos
                              select allTodos);
 
+                //count the list items
+                var count = (from allTodos in db.Todos
+                             select allTodos).Count();
+
+                CountLabel.Text = count.ToString();
+
                 //bind the result to the GridView
                 TodoGridView.DataSource = Todos.ToList();
                 TodoGridView.DataBind();
             }
+
         }//end of get games
 
         protected void TodoGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)

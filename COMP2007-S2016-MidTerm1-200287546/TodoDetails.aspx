@@ -12,8 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="TodoNotesTextBox">Notes: </label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TodoNotesTextBox" placeholder="Notes" required="true" TextMode="MultiLine" Rows="3" Columns="3"></asp:TextBox>
-                    <asp:RequiredFieldValidator Display="Dynamic" CssClass="alert-danger" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Notes will help you remember what you need to do!" ControlToValidate="TodoNotesTextBox"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="TodoNotesTextBox" runat="server" TextMode="MultiLine" Columns="3" Rows="3" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="CompletedCheckBox">Completed: </label>

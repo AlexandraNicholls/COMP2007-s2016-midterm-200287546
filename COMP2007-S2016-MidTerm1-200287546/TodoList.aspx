@@ -6,6 +6,8 @@
             <div class="col-md-offset-2 col-md-8">
                 <h1>Todo List</h1>
                 <a href="TodoDetails.aspx" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add A Todo Item</a>
+                <label class="control-label" for="CountNameLabel">Count: </label>
+                <asp:label ID="CountLabel" runat="server" Text=""></asp:label>
                 <asp:GridView runat="server" CssClass="table table-bordered table-striped table-hover" 
                     ID="TodoGridView" AutoGenerateColumns="false" DataKeyNames="TodoID" OnRowDeleting="TodoGridView_RowDeleting">
                     <Columns>
