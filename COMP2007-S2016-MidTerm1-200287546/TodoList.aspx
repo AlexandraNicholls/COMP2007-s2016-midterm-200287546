@@ -15,7 +15,7 @@
                         <asp:BoundField DataField="TodoNotes" HeaderText="Notes" Visible="true" />
                         <asp:TemplateField HeaderText="Completed" >
                             <ItemTemplate>
-                                <asp:CheckBox runat="server" ID="CompletedCheckBox" DataField="Completed" Checked='<%#Convert.ToBoolean(Eval("Completed")) %>' />
+                                <asp:CheckBox runat="server" ID="CompletedCheckBox" DataField="Completed" Checked='<%#Convert.ToBoolean(Eval("Completed")) %>' enabled="false"/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:HyperLinkField HeaderText="Edit" Text="<i class='fa fa-pencil-square-o fa-lg'></i> Edit"
