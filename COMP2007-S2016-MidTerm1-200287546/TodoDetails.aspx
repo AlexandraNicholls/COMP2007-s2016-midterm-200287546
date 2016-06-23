@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-8">
+            <div class=" col-md-8">
                 <h1>Create a New Todo Item</h1>
                 <div class="form-group">
                     <label class="control-label" for="TodoNameTextBox">Name: </label>
@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="TodoNotesTextBox">Notes: </label>
-                    <asp:TextBox runat="server" CssClass="form-control" ID="TodoNotesTextBox" placeholder="Notes" required="true"></asp:TextBox>
+                    <asp:TextBox runat="server" CssClass="form-control" ID="TodoNotesTextBox" placeholder="Notes" required="true" TextMode="MultiLine" Rows="3" Columns="3"></asp:TextBox>
                     <asp:RequiredFieldValidator Display="Dynamic" CssClass="alert-danger" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Notes will help you remember what you need to do!" ControlToValidate="TodoNotesTextBox"></asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group">
