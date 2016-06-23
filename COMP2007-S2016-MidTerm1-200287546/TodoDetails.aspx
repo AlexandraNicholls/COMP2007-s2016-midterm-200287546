@@ -14,9 +14,10 @@
                     <label class="control-label" for="TodoNotesTextBox">Notes: </label>
                     <asp:TextBox ID="TodoNotesTextBox" runat="server" TextMode="MultiLine" Columns="3" Rows="3" CssClass="form-control"></asp:TextBox>
                 </div>
-                <div class="form-group">
-                    <label class="control-label" for="CompletedCheckBox">Completed: </label>
-                    <asp:CheckBox ID="CompletedCheckBox" runat="server" CssClass="form-control"></asp:CheckBox>
+                <div class="checkbox">
+                    <label>
+                        <input id="CompletedCheckBox" runat="server" type="checkbox" value="">Completed
+                    </label>
                 </div>
                 <div class="text-right">
                     <asp:Button Text="Save" runat="server" CssClass="btn btn-primary btn-lg" ID="SaveButton" OnClick="SaveButton_Click" />

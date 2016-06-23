@@ -46,7 +46,7 @@ namespace COMP2007_S2016_MidTerm1_200287546 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CompletedCheckBox;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox CompletedCheckBox;
         
         /// <summary>
         /// SaveButton control.
