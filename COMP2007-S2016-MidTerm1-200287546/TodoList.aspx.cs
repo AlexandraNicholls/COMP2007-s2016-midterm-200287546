@@ -37,8 +37,7 @@ namespace COMP2007_S2016_MidTerm1_200287546
             if (!IsPostBack)
             {
                 GetTodos();
-                //add the most recent todo item
-            }//end of postback check
+            }
         }//end of page load
 
         /**
@@ -63,7 +62,7 @@ namespace COMP2007_S2016_MidTerm1_200287546
                              select allTodos).Count();
 
                 CountLabel.Text = count.ToString();
-
+                
                 //bind the result to the GridView
                 TodoGridView.DataSource = Todos.ToList();
                 TodoGridView.DataBind();
@@ -71,6 +70,14 @@ namespace COMP2007_S2016_MidTerm1_200287546
 
         }//end of get games
 
+        /**
+       * <summary>
+       * This method deletes a todo
+       * </summary>
+       * 
+       * @method TodoGridView_RowDeleting
+       * @returns {void}
+       */
         protected void TodoGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             // store which row was clicked
@@ -97,5 +104,67 @@ namespace COMP2007_S2016_MidTerm1_200287546
                 this.GetTodos();
             }
         }//end of deleting row
+
+        /**
+        * <summary>
+        * This method saves the todo data to the table
+        * </summary>
+        * 
+        * @method SaveButton_Click
+        * @returns {void}
+        */
+        protected void CompletedCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+            // connect to EF DB
+            using (TodoConnection db = new TodoConnection())
+            {
+
+                Todo changeTodo = new Todo();
+
+                int TodoID = 0;
+
+                if (Request.QueryString.Count > 0)
+                {
+                    // get the id from the URL
+                    TodoID = Convert.ToInt32(Request.QueryString["TodoID"]);
+
+                    // get the current game from EF DB
+                    changeTodo = (from TodoList in db.Todos
+                                  where TodoList.TodoID == TodoID
+                                  select TodoList).FirstOrDefault();
+                }
+
+                //check which row had the checkbox changed
+                foreach (GridViewRow row in TodoGridView.Rows)
+                {
+                    CheckBox complete = (CheckBox)row.Cells[0].FindControl("CompletedCheckBox");
+                    if (complete.Checked == true)
+                    {
+
+                        //set the todo's data
+                        changeTodo.Completed = complete.Checked;
+
+                        // run insert in DB
+                        db.SaveChanges();
+
+                        // redirect to the updated game page
+                        Response.Redirect("~/TodoList.aspx");
+                    }
+                    else if (complete.Checked == false)
+                    {
+
+                        //set the todo's data
+                        changeTodo.Completed = complete.Checked;
+
+                        // run insert in DB
+                        db.SaveChanges();
+
+                        // redirect to the updated game page
+                        Response.Redirect("~/TodoList.aspx");
+                    }//end if
+                }//end for
+            }//end of db
+        }//end of checkbox changed
     }//end of class
 }//end of file
